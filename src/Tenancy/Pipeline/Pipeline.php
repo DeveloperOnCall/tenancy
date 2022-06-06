@@ -20,7 +20,7 @@ use Tenancy\Pipeline\Contracts\Step;
 
 class Pipeline
 {
-    protected $steps;
+    protected Steps $steps;
 
     public function __construct(Steps $steps = null)
     {
@@ -44,7 +44,7 @@ class Pipeline
         return $this;
     }
 
-    public function handle($event, callable $fire = null)
+    public function handle($event, callable $fire = null): Steps
     {
         $steps = $this->steps;
 

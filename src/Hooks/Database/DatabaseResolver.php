@@ -29,7 +29,7 @@ class DatabaseResolver implements ResolvesDatabases
     /**
      * @var Dispatcher
      */
-    protected $events;
+    protected Dispatcher $events;
 
     public function __construct(Dispatcher $events)
     {

@@ -18,14 +18,10 @@ namespace Tenancy\Support\Concerns;
 
 trait PublishesConfigs
 {
-    /**
-     * Configuration files to publish.
-     *
-     * @var array
-     */
-    protected $configs = [];
 
-    protected function publishConfigs()
+    protected array $configs = [];
+
+    protected function publishConfigs(): void
     {
         foreach ($this->configs as $config) {
             $configPath = basename($config);

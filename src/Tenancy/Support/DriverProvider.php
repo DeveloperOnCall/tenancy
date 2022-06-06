@@ -27,7 +27,7 @@ abstract class DriverProvider extends Provider
      *
      * @var array
      */
-    protected $drivers = [];
+    protected array $drivers = [];
 
     public function register()
     {

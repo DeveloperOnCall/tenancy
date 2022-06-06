@@ -29,9 +29,9 @@ class ConnectionResolver implements ResolvesConnections
     /**
      * @var Dispatcher
      */
-    protected $events;
+    // protected $events;
 
-    public function __construct(Dispatcher $events)
+    public function __construct(protected Dispatcher $events)
     {
         $this->events = $events;
     }

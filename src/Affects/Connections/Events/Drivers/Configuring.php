@@ -26,26 +26,25 @@ class Configuring
     /**
      * @var Tenant
      */
-    public $tenant;
+    //public $tenant;
 
     /**
      * @var array
      */
-    public $configuration;
+    //public $configuration;
 
     /**
      * @var ProvidesConfiguration
      */
-    public $provider;
+    //public $provider;
 
-    public function __construct(Tenant $tenant, array &$configuration, ProvidesConfiguration $provider)
-    {
-        $this->tenant = $tenant;
-        $this->configuration = &$configuration;
-        $this->provider = $provider;
-    }
+    public function __construct(
+        public Tenant $tenant,
+        public array &$configuration,
+        public ProvidesConfiguration $provider
+    ){}
 
-    public function useConnection(string $connection, array $override = [])
+    public function useConnection(string $connection, array $override = []): static
     {
         $this->configuration = array_merge(
             config("database.connections.$connection"),
@@ -55,7 +54,7 @@ class Configuring
         return $this;
     }
 
-    public function useConfig(string $path, array $override = [])
+    public function useConfig(string $path, array $override = []): static
     {
         if (!file_exists($path)) {
             throw new InvalidArgumentException("Cannot set up tenant connection configuration, file $path does not exist.");

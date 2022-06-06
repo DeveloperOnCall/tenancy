@@ -20,6 +20,9 @@ use Illuminate\Support\Traits\Macroable;
 use Tenancy\Identification\Contracts\Tenant;
 use Tenancy\Identification\Events\Switched;
 
+/**
+ * @method static string getTenantConnectionName()
+ */
 class Environment
 {
     use Concerns\DispatchesEvents;
@@ -29,16 +32,11 @@ class Environment
     /**
      * @var Tenant|null
      */
-    protected $tenant;
+    protected ?Tenant $tenant = null;
 
-    /**
-     * Whether the tenant has been identified previously.
-     *
-     * @var bool
-     */
-    protected $identified = false;
+    protected bool $identified = false;
 
-    public function setTenant(Tenant $tenant = null)
+    public function setTenant(Tenant $tenant = null): static
     {
         $this->tenant = $tenant;
 
@@ -72,7 +70,7 @@ class Environment
         return $this->identified;
     }
 
-    public function setIdentified(bool $identified)
+    public function setIdentified(bool $identified): static
     {
         $this->identified = $identified;
 

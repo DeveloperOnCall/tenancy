@@ -33,7 +33,7 @@ trait AllowsTenantIdentification
      *
      * @return string|int
      */
-    public function getTenantKey()
+    public function getTenantKey(): int|string
     {
         return $this->getKey();
     }

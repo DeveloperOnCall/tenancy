@@ -28,16 +28,16 @@ class MigratesHook extends ConfigurableHook
     /**
      * @var Migrator
      */
-    public $migrator;
+    public Migrator $migrator;
 
-    public $connection;
+    public string $connection;
 
     public $action;
 
-    public $priority = -50;
+    public int $priority = -50;
 
     /** @var array */
-    public $paths;
+    public array $paths;
 
     public function __construct()
     {
@@ -48,7 +48,7 @@ class MigratesHook extends ConfigurableHook
         $this->paths = $this->migrator->paths();
     }
 
-    public function for($event)
+    public function for($event): static
     {
         $this->action = $event instanceof Deleted ? 'reset' : 'run';
 
